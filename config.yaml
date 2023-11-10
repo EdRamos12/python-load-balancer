@@ -1,19 +1,36 @@
-hosts:
-  - host: www.mango.com
-    servers:
-      - localhost:8081
-      - localhost:8082
-  - host: www.apple.com
-    servers:
-      - localhost:9081
-      - localhost:9082
+# Available Load Balance methods:
+# host, path, no-content
+method: no-content
 
-paths:
-  - path: /mango
-    servers:
-      - localhost:8081
-      - localhost:8082
-  - path: /apple
-    servers:
-      - localhost:9081
-      - localhost:9082  
+# Use this example if you want to Load Balance by host
+# hosts:
+#   - host: www.mango.com
+#     servers:
+#       - localhost:8081
+#       - localhost:8082
+#   - host: www.apple.com
+#     servers:
+#       - localhost:9081
+#       - localhost:9082
+
+# Use this example if you want to Load Balance by path
+# paths:
+#   - path: /mango
+#     servers:
+#       - localhost:8081
+#       - localhost:8082
+#   - path: /apple
+#     servers:
+#       - localhost:9081
+#       - localhost:9082  
+
+# Use this example if you want to Load Balance with no determined content
+no-content: 
+  # Determine which algorithm you will use to load certain website
+  # Currently available: random, round robin
+  algorithm: round robin
+  servers:
+    - localhost:8081
+    - localhost:8082
+    - localhost:9081
+    - localhost:9082  
